@@ -1,0 +1,61 @@
+\documentclass[a4paper, 11pt, leqno]{article}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{fancyhdr} 
+%\usepackage{sectsty}
+\usepackage[T1]{fontenc}
+%\usepackage{pstricks}
+%\usepackage{mathrsfs}
+%\usepackage{pifont}
+\usepackage{array}
+%\usepackage{titlesec}
+
+%% pour les fontes
+\usepackage{ae}
+\usepackage{aecompl}
+
+%% hyperref avec bookmarks
+%%\usepackage[bookmarks=true,hyperindex=true,
+%%pdftitle={On the Entropy of Braids},
+%%colorlinks=true,linkcolor=blue,
+%%pdfauthor={J.-O. Moussafir},
+%%pdfstartview=FitH]{hyperref} 
+ 
+%%\DeclareCaptionLabelSeparator{colon}{ -- }
+%%\captionsetup{textfont=it, labelfont=bf}
+
+
+\begin{document}
+
+Avec un pas de temps de 1 jour, je note $S_t^i$ la production électrique 
+d'une unité photo-voltaique sur le site $i$, et $E_t^i$ la production d'une unité éolienne 
+sur le site $i$ à la date t. C'est la donné du pb, $S_t^i$ et $E_t^i$ 
+dépendent des conditions météo moyennes selon la période de l'année etc. 
+
+Les inconnues du problème sont $p_i$, le nombre d'unités photo-voltaiques sur le site $i$
+et $q_i$ le nombre d'éoliennes sur le site $i$. On veut que chaque jour
+$$
+P_t =\sum_i p_i S_t^i + q_i E_t^i \geq A
+$$
+et aussi que la variance de $P_t$ soit aussi petite que possible, c'est-à-dire qu'on veut 
+résoudre
+\begin{align*}
+& \min \sum_t \left( P_t - \langle P \rangle \right)^2 \quad \text{avec} \\
+& P_t \geq A \text{ à chaque t}.
+\end{align*}
+où $\langle P \rangle$ désigne la moyenne de $P_t$.
+
+On pourrait aussi minimiser $\sum_t \left ( P_t - A \right )^2$, et aussi introduire le 
+coût de chaque unité photo-voltaique et éolienne. Enfing bref il y a plein de possibilités, 
+mais on se retrouve chaque fois avec un problème d'optimisation avec contraintes linéaires
+et objectif (la fonction qu'on minimise) linéaire ou quadratique. Tout ça se résout avec avec cvxopt en python par exemple (https://cvxopt.org/).
+
+\vspace{0.5cm}
+\noindent
+Qu'en penses-tu ?
+
+\vspace{0.5cm}
+\noindent
+Bisous
+\end{document}
